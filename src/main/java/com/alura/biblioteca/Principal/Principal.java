@@ -10,7 +10,6 @@ import jakarta.persistence.OneToMany;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -130,7 +129,7 @@ public class Principal {
             libro.setAutores(listaA);
             repositorio.save(libro);
             System.out.println(libro);
-        }catch (IllegalArgumentException e){
+        }catch (NullPointerException | IllegalArgumentException e){
             System.out.println("Libro no encontrado");
         }
 
@@ -147,7 +146,7 @@ public class Principal {
             return new DatosLibro(primerLibro.titulo(),primerLibro.idioma(),primerLibro.descargas(),primerLibro.autores());
 
         }catch (Exception e){
-            System.out.println("Serie no encontrada");
+            System.out.println("Libro no encontrado");
         }
         return null;
     }
